@@ -6,8 +6,6 @@ import {
 } from "single-spa-layout";
 import microfrontendLayout from "./microfrontend-layout.html";
 
-
-
 const routes = constructRoutes(microfrontendLayout);
 const applications = constructApplications({
   routes,
@@ -29,11 +27,11 @@ layoutEngine.activate();
 //   location => location.pathname.startsWith('/')
 // );
 
-// registerApplication(
-//   'todo-details-widget',
-//   () => System.import('@todos/todo-details-widget'),
-//   location => location.pathname.startsWith('/')
-// );
+registerApplication(
+  "todo-details-widget",
+  () => System.import("@todos/todo-details-widget"),
+  (location) => location.pathname.startsWith("/details")
+);
 
 // registerApplication(
 //   'todos-view',
@@ -46,7 +44,6 @@ layoutEngine.activate();
 //   () => System.import('@todos/todo-details'),
 //   location => location.pathname.startsWith('/')
 // );
-
 
 // registerApplication(
 //   'todo-editor',

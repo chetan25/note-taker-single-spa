@@ -1,6 +1,6 @@
 const { merge } = require("webpack-merge");
 const singleSpaDefaults = require("webpack-config-single-spa-react-ts");
-const path = require('path');
+const path = require("path");
 
 module.exports = (webpackConfigEnv, argv) => {
   const defaultConfig = singleSpaDefaults({
@@ -13,25 +13,19 @@ module.exports = (webpackConfigEnv, argv) => {
   return merge(defaultConfig, {
     // modify the webpack config however you'd like to by adding to this object
     entry: {
-      'todos-auth': path.resolve(
-        process.cwd(),
-        `src/todos-auth`
-      ),
-      'todos-header': path.resolve(
-        process.cwd(),
-        `src/todos-header`
-      )
+      "todos-auth": path.resolve(process.cwd(), `src/todos-auth`),
+      "todos-header": path.resolve(process.cwd(), `src/todos-header`),
     },
     output: {
-      filename: '[name].js',
+      filename: "[name].js",
       libraryTarget: "system",
       path: path.resolve(process.cwd(), "dist"),
-      uniqueName: 'todo-auth',
-      devtoolNamespace: 'todo-auth',
+      uniqueName: "todo-auth",
+      devtoolNamespace: "todo-auth",
       publicPath: "",
     },
     devServer: {
-      port: 8500,
+      port: 8502,
       onListening: ({ compiler }) => {
         const { https, client } = compiler.options.devServer;
         const { publicPath, filename } = compiler.options.output;
@@ -43,6 +37,6 @@ module.exports = (webpackConfigEnv, argv) => {
         );
       },
     },
-    externals: ['@todos/shared-state'] 
-  }); 
+    externals: ["@todos/shared-state"],
+  });
 };

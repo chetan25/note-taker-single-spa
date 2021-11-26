@@ -1,9 +1,8 @@
 import { BehaviorSubject } from "rxjs";
-import {  navigateToUrl } from "single-spa";
+import { navigateToUrl } from "single-spa";
 
 // Anything exported from this file is importable by other in-browser modules.
 // export function publicApiFunction() {}
-
 
 export const auth$ = new BehaviorSubject({
   sessionToken: null,
@@ -12,11 +11,11 @@ export const auth$ = new BehaviorSubject({
 });
 
 export function login(username, password) {
-    console.log(password);
-    auth$.next({
-      sessionToken: username,
-      error: false,
-      pending: false,
-    });
-    navigateToUrl('/details')
+  console.log(password);
+  auth$.next({
+    sessionToken: username,
+    error: false,
+    pending: false,
+  });
+  navigateToUrl("/details");
 }
